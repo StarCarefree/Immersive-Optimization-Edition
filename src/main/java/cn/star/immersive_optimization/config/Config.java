@@ -2,7 +2,9 @@ package cn.star.immersive_optimization.config;
 
 import cn.star.immersive_optimization.Constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class Config extends JsonConfig {
@@ -18,7 +20,7 @@ public final class Config extends JsonConfig {
 
     @Override
     int getVersion() {
-        return 2;
+        return 3;
     }
 
     @SuppressWarnings("unused")
@@ -39,7 +41,7 @@ public final class Config extends JsonConfig {
 
     // Every blocksPerLevel, the tick rate will be reduced by 1, offset by initial minDistance to avoid visible glitches.
     // Smaller values increase server performance.
-    public int minDistance = 6;
+    public int minDistance = 8;
     public int blocksPerLevel = 64;
     public int blocksPerLevelDistanceCulled = 10;
     public int blocksPerLevelTrackingCulled = 10;
@@ -49,13 +51,15 @@ public final class Config extends JsonConfig {
     // The same for block entities, but without further culling.
     public int blocksPerLevelBlockEntities = 32;
 
-    // The ms of the total server tick time before the server is considered stressed.
-    // When stressed, the server will gradually increase the blockedPerLevel by at least minDecreaseFactor.
-    // This may increase visual glitches with clients and is a last resort to avoid lag.
-    // 0 to turn off.
     public int stressedThreshold = 45;
     public float minDecreaseFactor = 0.25f;
+    public boolean useEntityWhitelist = false;  // 是否启用白名单模式
+    public List<String> entityWhitelist = new ArrayList<>();
 
+    {
+        entityWhitelist.add("minecraft");
+    }
+    
     // Set to "false" to disable scheduling on given dimensions.
     public Map<String, Boolean> dimensions;
 

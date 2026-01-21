@@ -209,6 +209,14 @@ public class TickScheduler {
         Config config = Config.getInstance();
 
         ResourceLocation id = Registry.ENTITY_TYPE.getKey(entity.getType());
+        String namespace = id.getNamespace();
+
+        if (config.useEntityWhitelist && !config.entityWhitelist.isEmpty()) {
+            if (!config.entityWhitelist.contains(namespace)) {
+                return 1;
+            }
+        }
+
         if (!config.entities.getOrDefault(id.toString(), true)) return 0;
         if (!config.entities.getOrDefault(id.getNamespace(), true)) return 0;
 
