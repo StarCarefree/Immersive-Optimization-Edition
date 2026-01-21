@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Title: immersive_optimization
+Specification-Vendor: TheFlareStar,Luke100000
+Specification-Version: 1
+Implementation-Title: immersive_optimization
+Implementation-Version: 1.0.0
+Implementation-Vendor: TheFlareStar,Luke100000
+Implementation-Timestamp: 2026-01-21T12:05:23+0800
+MixinConfigs: immersive_optimization.mixins.json
+
